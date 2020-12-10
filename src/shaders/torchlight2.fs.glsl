@@ -40,20 +40,32 @@ void main() {
 
 		vec3 lightDir = -E;
     float cosTheta = clamp(dot( vec3(0.0,0.0,-1.0), lightDir),0.0,1.0);
-		if(cosTheta>0.8){
+		float cosTheta2 = clamp(dot( E, normalize(vNormal_vs) ),0.0,1.0);
+		float dist = length(vPosition_vs)*0.1f; // a augmenter pour réduire la distance d'éclairage
+		float att = cosTheta2 / (0.75f + 0.2f * dist + 10.f * dist * dist);
+		vec4 tlightColor = vec4(uKd.r * att, uKd.g * att, uKd.b * att, 0);
+		if(cosTheta>0.85){
+			/*
 			float cosTheta2 = clamp(dot( E, normalize(vNormal_vs) ),0.0,1.0);
-
-			float dist = length(vPosition_vs)*0.01f;
+			float dist = length(vPosition_vs)*0.1f; // a augmenter pour réduire la distance d'éclairage
 			float att = cosTheta2 / (0.75f + 0.2f * dist + 10.f * dist * dist);
-
+			vec4 tlightColor = vec4(uKd.r * att, uKd.g * att, uKd.b * att, 0);
+			vec3 totalLight = vec3(uKs.r * tlightColor.r * cosTheta2,
+												 uKs.g * tlightColor.g * cosTheta2,
+												 uKs.b * tlightColor.b * cosTheta2);
+												 */
 
 			//vec3 blinn = blinnPhong(vPosition_vs, normalize(vNormal_vs));
-			fFragColor = vec3(att * color.x, att * color.y, att * color.z);
+			fFragColor = vec3(tlightColor.x * color.x, tlightColor.y * color.y, tlightColor.z * color.z);
 		}
 		else{
-			fFragColor = vec3(0);
+			if(cosTheta>0.80){
+				//vec3 blinn = blinnPhong(vPosition_vs, normalize(vNormal_vs));
+				fFragColor = vec3((tlightColor.x * color.x)*0.5, (tlightColor.y * color.y)*0.5, (tlightColor.z * color.z)*0.5);
+			}
+			else{
+				fFragColor = vec3(0);
+			}
 		}
 
-
-
-}
+	}

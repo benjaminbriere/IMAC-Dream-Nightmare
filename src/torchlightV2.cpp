@@ -23,6 +23,9 @@ struct EarthProgram {
     GLint uEarthTexture;
     GLint uCloudTexture;
 
+    GLint uKd;
+    GLint uKs;
+
     EarthProgram(const FilePath& applicationPath):
         m_Program(loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
                               applicationPath.dirPath() + "shaders/torchlight2.fs.glsl")) {
@@ -31,6 +34,8 @@ struct EarthProgram {
         uNormalMatrix = glGetUniformLocation(m_Program.getGLId(), "uNormalMatrix");
         uEarthTexture = glGetUniformLocation(m_Program.getGLId(), "uTexture");
         uCloudTexture = glGetUniformLocation(m_Program.getGLId(), "uTextureNuages");
+        uKd = glGetUniformLocation(m_Program.getGLId(), "uKd");
+        uKs = glGetUniformLocation(m_Program.getGLId(), "uKs");
     }
 };
 
@@ -42,6 +47,9 @@ struct MoonProgram {
     GLint uNormalMatrix;
     GLint uMoonTexture;
 
+    GLint uKd;
+    GLint uKs;
+
     MoonProgram(const FilePath& applicationPath):
         m_Program(loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
                               applicationPath.dirPath() + "shaders/torchlight2.fs.glsl")) {
@@ -49,6 +57,8 @@ struct MoonProgram {
         uMVMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVMatrix");
         uNormalMatrix = glGetUniformLocation(m_Program.getGLId(), "uNormalMatrix");
         uMoonTexture = glGetUniformLocation(m_Program.getGLId(), "uTexture");
+        uKd = glGetUniformLocation(m_Program.getGLId(), "uKd");
+        uKs = glGetUniformLocation(m_Program.getGLId(), "uKs");
     }
 };
 
@@ -253,10 +263,18 @@ int main(int argc, char** argv) {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureLune);
 */
+
+
+
         earthProgram.m_Program.use();
 
         glUniform1i(earthProgram.uEarthTexture, 0);
         glUniform1i(earthProgram.uCloudTexture, 1);
+
+        // GESTION DE LA COULEUR DE LA LUMIERE
+        glUniform3f(earthProgram.uKd, 0.97, 0.97, 0.8); //Couleur de lumière
+        glUniform3f(earthProgram.uKs, 0.1, 0.0, 0.0);
+        // FIN GESTION LUMIERE
 
         glm::mat4 globalMVMatrix = ViewMatrix * glm::translate(glm::mat4(1.f), glm::vec3(0, 0, -5));
 
@@ -304,6 +322,12 @@ int main(int argc, char** argv) {
         moonProgram.m_Program.use();
 
         glUniform1i(moonProgram.uMoonTexture, 0);
+
+        // GESTION DE LA COULEUR DE LA LUMIERE
+        glUniform3f(moonProgram.uKd, 0.97, 0.97, 0.7); //Couleur de lumière
+        glUniform3f(moonProgram.uKs, 0.1, 0.0, 0.0);
+        // FIN GESTION LUMIERE
+
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureLune);
 
