@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstdio>
+#include <sstream>
 #include <GL/glew.h>
 
 using namespace std;
