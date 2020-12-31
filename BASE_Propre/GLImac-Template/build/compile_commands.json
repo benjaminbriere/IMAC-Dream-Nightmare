@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/Cone.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Cone.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Cone.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/FreeFlyCamera.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/FreeFlyCamera.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/FreeFlyCamera.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/Geometry.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Geometry.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Geometry.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/Image.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Image.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Image.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/Program.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Program.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Program.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/SDLWindowManager.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/SDLWindowManager.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/Shader.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Shader.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Shader.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/Sphere.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Sphere.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/Sphere.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/TrackballCamera.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/TrackballCamera.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/glimac",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/tiny_obj_loader.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/src/tiny_obj_loader.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/FreeflyCamera.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/FreeflyCamera.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/FreeflyCamera.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/GameEngine.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/GameEngine.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/GameEngine.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Light.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Light_Ambient.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light_Ambient.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light_Ambient.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Light_Directional.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light_Directional.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light_Directional.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Light_Point.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light_Point.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Light_Point.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Mesh.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Mesh.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Mesh.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Scene.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Scene.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Scene.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Shader.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Shader.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Shader.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Torchlight.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Torchlight.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Torchlight.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/Vertex.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Vertex.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/Vertex.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/jsoncpp.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/jsoncpp.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/jsoncpp.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/game",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/game.dir/src/utils.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/utils.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/src/utils.cpp"
+},
+{
+  "directory": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/build/src",
+  "command": "/usr/bin/c++   -I/usr/include/SDL -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/glimac/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/game/include -I/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/third-party/include  -g   -std=c++11 -o CMakeFiles/src_main.dir/main.cpp.o -c /home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/src/main.cpp",
+  "file": "/home/benjamin/Documents/openGL/S3/PROJET3/GLImac-Template/src/main.cpp"
+}
+]

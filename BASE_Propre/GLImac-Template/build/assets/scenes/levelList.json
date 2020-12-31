@@ -1,0 +1,8 @@
+{
+  "scenes" : [
+  	{
+  		"name" : "level1",
+  		"source" : "scenes/level1.json"
+  	}
+  ]
+}
