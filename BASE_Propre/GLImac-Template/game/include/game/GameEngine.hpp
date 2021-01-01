@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <GL/glew.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 
 #include <json/json.h>
 
@@ -43,7 +45,7 @@ namespace game
 		void setLampON(int v);
 		void updateTorchlight();
 
-		int getLampON();											
+		int getLampON();										
 
 		glimac::SDLWindowManager* _WindowManager;
 		ShaderProgram* _Program;

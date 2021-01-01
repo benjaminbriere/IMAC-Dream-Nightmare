@@ -49,6 +49,8 @@ namespace game
 
 	bool GameEngine::initSdlOpenGl()
 	{
+		SDL_Init(SDL_INIT_VIDEO);
+
 		glimac::SDLWindowManager* windowManager = new glimac::SDLWindowManager(800, 600, "Imac-Nightmare-Dream");
 
 		if (!windowManager) {
@@ -66,6 +68,18 @@ namespace game
 
 		std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
 		std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl << std::endl;
+
+		if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+  		{
+    	  printf("%s", Mix_GetError());
+   		}	
+		Mix_AllocateChannels(32);
+ 	    Mix_Music *musique; //Création du pointeur de type Mix_Music
+		musique = Mix_LoadMUS("src/../assets/Musique_jeu.mp3"); //Chargement de la musique
+ 		Mix_PlayMusic(musique, -1); //Jouer infiniment la musique
+
+		SDL_ShowCursor(SDL_DISABLE);
+
 
 		return true;
 	}
@@ -120,6 +134,10 @@ namespace game
 		bool done = false;
 		Uint32 currentTime = SDL_GetTicks();
 
+		Mix_Chunk *interrupteur;
+		interrupteur = Mix_LoadWAV("src/../assets/switch.wav");
+		SDL_Event event;
+
 		while(!done) {
 			Uint32 deltaTime = SDL_GetTicks() - currentTime;
 			std::cout << "delta time " << deltaTime <<std::endl;
@@ -130,19 +148,25 @@ namespace game
 			
 			if(getLampON()!=0){
 				updateTorchlight();
-			}
-			
+			}          
 
 			//sleep( (10000/60 - deltaTime );
 
 			renderScene();
+			
+			if(event.type == SDL_MOUSEBUTTONUP){
+				if(event.button.button == SDL_BUTTON_RIGHT){
+					Mix_PlayChannel(1, interrupteur, 0);
+					printf("COUCOU");
+				}
+			}
 
 			if (userEvents()) {
 				done = true;
 			}
-			
-		}
-
+		}		
+		Mix_FreeChunk(interrupteur);
+		Mix_CloseAudio();
 	}
 
 	void GameEngine::updateTorchlight(){
@@ -190,7 +214,6 @@ namespace game
 					_Torchlight->setNbBatteries(1);
 				}
 			}
-			
 		}
 	}
 
@@ -265,7 +288,6 @@ namespace game
 	int GameEngine::getLampON(){
 		return _lampON;
 	}
-
 }
 
 
