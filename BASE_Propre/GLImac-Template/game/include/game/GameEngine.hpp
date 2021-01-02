@@ -40,7 +40,8 @@ namespace game
 		void getBattery();	
 
 		void renderScene();						
-		bool userEvents();														
+		bool userEvents();
+		void checkVictory();														
 		void mouseEvents(SDL_Event e);
 		void setLampON(int v);
 		void updateTorchlight();
@@ -54,6 +55,7 @@ namespace game
 
 		int _SceneId;
 		int _lampON;
+		int _NbStatue;
 
 		
 	};

@@ -5,7 +5,8 @@ namespace game
 	GameEngine::GameEngine(const char* appPath)
 	{
 		_SceneId = -1; //le niveau à afficher, le -1 correspond à l'écran noir du temps de chargement 
-		
+		_NbStatue = 0;
+
 		_Torchlight = new Torchlight();
 		setLampON(_Torchlight->getLifeTime()); // allumage de la lampe torche qui doit interrargir avec le shader
 
@@ -113,6 +114,8 @@ namespace game
 		// Pour chacune des scènes on va récupérer son nom et son path et les initialiser
 		for (int i = 0; i < scenes.size(); i++) {
 			
+			std::cout<<"LECTURE SCENE : "<<i+1<<std::endl;
+
 			Scene* tmpScene = new Scene(_Program);
 
 			//initialisation de la scène et ajout de cette denriere dans le vecteur de scènes du moteur
@@ -153,11 +156,11 @@ namespace game
 			//sleep( (10000/60 - deltaTime );
 
 			renderScene();
+
 			
 			if(event.type == SDL_MOUSEBUTTONUP){
 				if(event.button.button == SDL_BUTTON_RIGHT){
 					Mix_PlayChannel(1, interrupteur, 0);
-					printf("COUCOU");
 				}
 			}
 
@@ -168,6 +171,19 @@ namespace game
 		Mix_FreeChunk(interrupteur);
 		Mix_CloseAudio();
 	}
+
+	void GameEngine::checkVictory(){
+
+		if(_NbStatue == 4) // le joueur a récupéré toute les statues
+		{
+			_SceneId = 1;
+		}
+		else if(_Torchlight->getNbBatteries()==0 && _Torchlight->getLifeTime() == 0 ){
+			_SceneId = 2;
+		}
+
+	}
+
 
 	void GameEngine::updateTorchlight(){
 		if(_Torchlight->getFrames()<=60){
@@ -182,11 +198,6 @@ namespace game
 				_Torchlight->setNbBatteries(-1);
 			}
 		}
-		
-		std::cout<<"Gestion lampe torche : "<<std::endl
-			<<"--> Nombre de piles : "<<_Torchlight->getNbBatteries()<<std::endl
-			<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl
-			<<"--> Nombre de frame : "<<_Torchlight->getFrames()<<std::endl;
 			
 	}
 
@@ -196,7 +207,7 @@ namespace game
 
 		getBattery();
 
-		_Scenes[_SceneId]->render(getLampON()); //passage de valeur de getLampON en parametre pour modifier le shader [ne fonctionne pas encore]
+		_Scenes[_SceneId]->render(getLampON(),_SceneId); //passage de valeur de getLampON en parametre pour modifier le shader [ne fonctionne pas encore]
 		_WindowManager->swapBuffers();
 	}
 
@@ -208,10 +219,17 @@ namespace game
 			glm::vec3 meshPosition = (*mesh)->getPosition();
 			//std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
 			if((*mesh)->getVisible() == 1){
-				if( std::abs(CameraPosition.x-meshPosition.x)<1.0 && std::abs(CameraPosition.z-meshPosition.z)<1.0){
+				if( std::abs(CameraPosition.x-meshPosition.x)<0.3 && std::abs(CameraPosition.z-meshPosition.z)<0.3){
 					//std::cout << "----- Proche " <<std::endl;
 					(*mesh)->setVisible(0.0);
 					_Torchlight->setNbBatteries(1);
+				}
+			}
+			if((*mesh)->getVisible() == 2){
+				if( std::abs(CameraPosition.x-meshPosition.x)<0.3 && std::abs(CameraPosition.z-meshPosition.z)<0.3){
+					//std::cout << "----- Proche " <<std::endl;
+					(*mesh)->setVisible(0.0);
+					_NbStatue++;
 				}
 			}
 		}
@@ -229,16 +247,33 @@ namespace game
 
 			if(e.type == SDL_MOUSEBUTTONUP){
 				if(e.button.button == SDL_BUTTON_RIGHT){
-					std::cout<<"valeur de LampON : "<< getLampON() <<std::endl;
+					//std::cout<<"valeur de LampON : "<< getLampON() <<std::endl;
 					if(getLampON() != 0){
 						//std::cout<<" valeur de la lampe = 1"<<std::endl;
 						setLampON(0);
-						std::cout<<" valeur de la lampe = "<< getLampON()<<std::endl;
+						//std::cout<<" valeur de la lampe = "<< getLampON()<<std::endl;
 					}else{
 						setLampON(_Torchlight->getLifeTime());
-						std::cout<<" valeur de la lampe = "<<getLampON()<<std::endl;
+						//std::cout<<" valeur de la lampe = "<<getLampON()<<std::endl;
 					}
 				}
+			}
+
+			if (e.type == SDL_KEYUP) {
+				switch (e.key.keysym.sym) {
+					case SDLK_LEFT:
+						std::cout<<"Numéro de la scène : "<<_SceneId<<std::endl;
+						if(_SceneId>0){
+							_SceneId--;
+						}
+						break;
+					case SDLK_RIGHT:
+						std::cout<<"Numéro de la scène : "<<_SceneId<<std::endl;
+						if(_SceneId<2){
+							_SceneId++;
+						}
+						break;
+					}
 			}
 
 			if(e.type == SDL_QUIT) {
@@ -262,7 +297,7 @@ namespace game
         if(_WindowManager->isKeyPressed(SDLK_d)){
 			_Scenes[_SceneId]->_Camera.moveLeft(-0.1);
 			_Scenes[_SceneId]->_Camera.setPositionY(0.0);
-		} 
+		}
 
 		return quit;
 	}

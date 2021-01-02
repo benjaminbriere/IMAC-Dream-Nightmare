@@ -37,6 +37,7 @@ namespace game
 		void setSpecular(const glm::vec3 s);
 		void setShininess(const float s);
 		void setLampON(int v);
+		void setScene(int v);
 		int getLampON();
 
 		void setLights(const std::vector<Light*> lights, const glm::mat4* ViewMatrix);
@@ -50,6 +51,7 @@ namespace game
 		GLint _specularLocation;
 		GLint _shininessLocation;
 		GLint _lampON;
+		GLint _scene;
 
 		glimac::Program _Program;
 	};

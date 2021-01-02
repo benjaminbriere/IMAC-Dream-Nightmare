@@ -20,6 +20,7 @@ uniform float uShininess;
 uniform Light uLights[10];
 uniform int uNbLights;
 uniform int lampON;
+uniform int scene;
 
 out vec3 fFragColor;
 
@@ -81,36 +82,40 @@ void main() {
 	fFragColor = blinnPhong(uLights[0]);
 	for(int i = 1;  i < uNbLights; i++)
 	{
-		if(lampON > 0)
-		{
+		if(scene == 0){
+
 			fFragColor += blinnPhong(uLights[i]);
-				
-			vec3 viewDirection = -vPosition_vs;
-			vec3 E = normalize(viewDirection);
-			vec4 color = texture(uTexture, vTexCoords);
-				
-			vec3 lightDir = -E;
-			float cosTheta = clamp(dot( vec3(0.0,0.0,-1.0), lightDir),0.0,1.0);
-				
-			if(cosTheta>0.87){
-				float cosTheta2 = clamp(dot( E, normalize(vNormal_vs) ),0.0,1.0);
 
-				float dist = length(vPosition_vs)*0.05f; //plus la valeur est petite plus la distance qu'éclaire la lampe torche est grande
-				float att = cosTheta2 / (0.75f + 0.2f * dist + 10.f * dist * dist);
+			if(lampON > 0)
+			{
+				
+					
+				vec3 viewDirection = -vPosition_vs;
+				vec3 E = normalize(viewDirection);
+				vec4 color = texture(uTexture, vTexCoords);
+					
+				vec3 lightDir = -E;
+				float cosTheta = clamp(dot( vec3(0.0,0.0,-1.0), lightDir),0.0,1.0);
+					
+				if(cosTheta>0.87){
+					float cosTheta2 = clamp(dot( E, normalize(vNormal_vs) ),0.0,1.0);
+
+					float dist = length(vPosition_vs)*0.3f; //plus la valeur est petite plus la distance qu'éclaire la lampe torche est grande
+					float att = cosTheta2 / (0.75f + 0.2f * dist + 10.f * dist * dist);
 
 
-				//vec3 blinn = blinnPhong(vPosition_vs, normalize(vNormal_vs));
-				fFragColor = vec3(att *fFragColor.x, att * fFragColor.y, att * fFragColor.z);
-			}
+					//vec3 blinn = blinnPhong(vPosition_vs, normalize(vNormal_vs));
+					fFragColor = vec3(att *fFragColor.x, att * fFragColor.y, att * fFragColor.z);
+				}
+				else{
+
+					float intensity = cosTheta;
+					fFragColor = vec3(fFragColor.x /(3.0/intensity), fFragColor.y /(3.0/intensity), fFragColor.z/(3.0/intensity) );
+				}
+			}	
 			else{
-
-				float intensity = cosTheta;
-				fFragColor = vec3(fFragColor.x /(3.0/intensity), fFragColor.y /(3.0/intensity), fFragColor.z/(3.0/intensity) );
+				fFragColor = vec3(fFragColor.x /(5.0), fFragColor.y /(5.0), fFragColor.z/(5.0) );
 			}
-		}	
-		else{
-			fFragColor = vec3(0);
-		}
-		
+		}		
 	}
 }

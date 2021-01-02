@@ -149,7 +149,7 @@ namespace game
 
 	}
 
-	void Scene::render(int lamp) {
+	void Scene::render(int lamp, int scene) {
 		glEnable(GL_DEPTH_TEST);
 
 		// Render each mesh
@@ -181,6 +181,7 @@ namespace game
 				_Program->setNormalMatrix( glm::value_ptr(MVMatrix) );
 				_Program->setLights(_Lights, &ViewMatrix);
 				_Program->setLampON(lamp);
+				_Program->setScene(scene);
 				(*mesh)->render();
 			}
 
