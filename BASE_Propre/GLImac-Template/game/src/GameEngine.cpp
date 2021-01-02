@@ -193,7 +193,8 @@ namespace game
 		else{
 			_Torchlight->setFrames(-60);
 			if(_Torchlight->getLifeTime()>0){
-				_Torchlight->setLifeTime(-1);
+				std::cout<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl;
+				_Torchlight->setLifeTime(-20);
 			}
 			else{
 				_Torchlight->setNbBatteries(-1);
