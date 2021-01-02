@@ -3,12 +3,14 @@
 
 namespace game
 {
-  class FreeflyCamera
+  class FPSCamera
   {
     private:
       glm::vec3 m_Position;
       float m_fPhi;
       float m_fTheta;
+      float m_mouse_sensibility;
+      float m_walk_sensibility;
       glm::vec3 m_FrontVector;
       glm::vec3 m_LeftVector;
       glm::vec3 m_UpVector;
@@ -16,8 +18,8 @@ namespace game
       void computeDirectionVectors();
     
     public:
-      FreeflyCamera();
-      ~FreeflyCamera();
+      FPSCamera();
+      ~FPSCamera();
 
       void setPosition(glm::vec3 position);
       void setPositionY(float v);

@@ -140,7 +140,7 @@ namespace game
 
 		while(!done) {
 			Uint32 deltaTime = SDL_GetTicks() - currentTime;
-			std::cout << "delta time " << deltaTime <<std::endl;
+			//std::cout << "delta time " << deltaTime <<std::endl;
 			Uint32 currentTime = SDL_GetTicks();
 			if(deltaTime < 1000/60){
 				SDL_Delay(1000/60 - deltaTime);
@@ -182,12 +182,12 @@ namespace game
 				_Torchlight->setNbBatteries(-1);
 			}
 		}
-		
+		/*
 		std::cout<<"Gestion lampe torche : "<<std::endl
 			<<"--> Nombre de piles : "<<_Torchlight->getNbBatteries()<<std::endl
 			<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl
 			<<"--> Nombre de frame : "<<_Torchlight->getFrames()<<std::endl;
-			
+			*/
 	}
 
 	void GameEngine::renderScene()
@@ -202,11 +202,11 @@ namespace game
 
 	void GameEngine::getBattery(){
 		glm::vec3 CameraPosition = _Scenes[_SceneId]->_Camera.getPosition();
-		//std::cout << "Position de la camera : " << CameraPosition << std::endl;
+		std::cout << "Position de la camera : " << CameraPosition << std::endl;
 		//std::cout << "|||||||||||||||||||+  : " << getNbBatteries() <<std::endl;
 		for (auto mesh = _Scenes[_SceneId]->_Meshes.begin(); mesh != _Scenes[_SceneId]->_Meshes.end(); ++mesh) {
 			glm::vec3 meshPosition = (*mesh)->getPosition();
-			//std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
+			std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
 			if((*mesh)->getVisible() == 1){
 				if( std::abs(CameraPosition.x-meshPosition.x)<1.0 && std::abs(CameraPosition.z-meshPosition.z)<1.0){
 					//std::cout << "----- Proche " <<std::endl;

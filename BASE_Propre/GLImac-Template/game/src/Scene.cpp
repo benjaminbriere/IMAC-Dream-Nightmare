@@ -4,7 +4,7 @@ namespace game
 {
 	Scene::Scene(ShaderProgram* program):
 		_Program(program),
-		_Camera(FreeflyCamera())
+		_Camera(FPSCamera())
 	{};
 
 	Scene::~Scene()
@@ -137,7 +137,7 @@ namespace game
 		}
 
 		// Initialize the camera
-		_Camera = FreeflyCamera();
+		_Camera = FPSCamera();
 
 		_Camera.setPosition(glm::vec3(
 			cameraDatas.get("position", 5).get("x", 5).asFloat(),
