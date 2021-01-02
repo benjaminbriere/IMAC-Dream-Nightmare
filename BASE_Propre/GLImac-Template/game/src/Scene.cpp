@@ -156,7 +156,7 @@ namespace game
 		for (auto mesh = _Meshes.begin(); mesh != _Meshes.end(); ++mesh) {
 			
 			//std::cout << "VISIBLE : "<<(*mesh)->getVisible() <<std::endl;
-			if((*mesh)->getVisible() == 1 || (*mesh)->getVisible() == -1){
+			if((*mesh)->getVisible() == 1 || (*mesh)->getVisible() == -1 || (*mesh)->getVisible() == 2){
 
 				glm::mat4 MVMatrix, ProjMatrix, NormalMatrix, ViewMatrix;
 

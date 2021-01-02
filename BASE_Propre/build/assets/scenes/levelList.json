@@ -1,0 +1,16 @@
+{
+  "scenes" : [
+  	{
+  		"name" : "level1",
+  		"source" : "scenes/level1.json"
+  	},
+  	{
+  		"name" : "levelVictory",
+  		"source" : "scenes/levelVictory.json"
+  	},
+  	{
+  		"name" : "levelLose",
+  		"source" : "scenes/levelLose.json"
+  	}
+  ]
+}
