@@ -32,7 +32,7 @@ namespace game
 		_specularLocation = glGetUniformLocation(_Program.getGLId(), "uKs");
 		_shininessLocation = glGetUniformLocation(_Program.getGLId(), "uShininess");
 		_lampON = glGetUniformLocation(_Program.getGLId(), "lampON");
-
+		_scene = glGetUniformLocation(_Program.getGLId(), "scene");
 
 		std::cout << "ShaderProgram - créé avec succès. " << std::endl << std::endl;
 
@@ -51,6 +51,11 @@ namespace game
 
 	void ShaderProgram::setLampON(int v){
 	  glUniform1i(_lampON, v);
+	  //_lampON = v;	
+	}
+
+	void ShaderProgram::setScene(int v){
+	  glUniform1i(_scene, v);
 	  //_lampON = v;	
 	}
 
