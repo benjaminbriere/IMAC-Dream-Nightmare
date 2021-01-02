@@ -13,7 +13,7 @@
 #include "utils.hpp"
 #include "Mesh.hpp"
 #include "Shader.hpp"
-#include "FreeflyCamera.hpp"
+#include "FPSCamera.hpp"
 #include "Light.hpp"
 #include "Light_Ambient.hpp"
 #include "Light_Directional.hpp"
@@ -30,7 +30,7 @@ namespace game
 
 
 		public:
-			FreeflyCamera _Camera;
+			FPSCamera _Camera;
 			std::vector<Mesh*> _Meshes;
 
 			Scene(ShaderProgram* program);
