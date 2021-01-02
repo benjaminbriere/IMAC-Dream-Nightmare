@@ -38,6 +38,7 @@ namespace game
 		void setShininess(const float s);
 		void setLampON(int v);
 		void setScene(int v);
+		void setTorch(int v);
 		int getLampON();
 
 		void setLights(const std::vector<Light*> lights, const glm::mat4* ViewMatrix);
@@ -52,6 +53,7 @@ namespace game
 		GLint _shininessLocation;
 		GLint _lampON;
 		GLint _scene;
+		GLint _torch;
 
 		glimac::Program _Program;
 	};

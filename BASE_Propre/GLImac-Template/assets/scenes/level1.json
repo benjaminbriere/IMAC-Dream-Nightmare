@@ -238,7 +238,7 @@
         "y" : 0.1,
         "z" : 0.1
       },
-      "visible" : -1.0
+      "visible" : 2.0
     },
     {
       "source" : "statue_1.obj",
@@ -258,7 +258,7 @@
         "y" : 0.1,
         "z" : 0.1
       },
-      "visible" : -1.0
+      "visible" : 2.0
     },
     {
       "source" : "statue_2.obj",
@@ -278,7 +278,7 @@
         "y" : 0.1,
         "z" : 0.1
       },
-      "visible" : -1.0
+      "visible" : 2.0
     },
     {
       "source" : "statue_2.obj",
@@ -298,7 +298,7 @@
         "y" : 0.1,
         "z" : 0.1
       },
-      "visible" : -1.0
+      "visible" : 2.0
     }
   ],
 

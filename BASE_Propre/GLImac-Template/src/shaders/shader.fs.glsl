@@ -21,6 +21,7 @@ uniform Light uLights[10];
 uniform int uNbLights;
 uniform int lampON;
 uniform int scene;
+uniform int torch;
 
 out vec3 fFragColor;
 
@@ -86,10 +87,9 @@ void main() {
 
 			fFragColor += blinnPhong(uLights[i]);
 
-			if(lampON > 0)
+			if(lampON > 0 && torch == 1)
 			{
 				
-					
 				vec3 viewDirection = -vPosition_vs;
 				vec3 E = normalize(viewDirection);
 				vec4 color = texture(uTexture, vTexCoords);

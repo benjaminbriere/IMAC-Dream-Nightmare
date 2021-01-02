@@ -6,6 +6,7 @@ namespace game
 	{
 		_SceneId = -1; //le niveau à afficher, le -1 correspond à l'écran noir du temps de chargement 
 		_NbStatue = 0;
+		_TorchLightWorks = 1;
 
 		_Torchlight = new Torchlight();
 		setLampON(_Torchlight->getLifeTime()); // allumage de la lampe torche qui doit interrargir avec le shader
@@ -34,6 +35,15 @@ namespace game
 			std::cerr << "ERREUR = Initialisation Shaders" << std::endl;
 			return false;
 		}
+
+		//Initialisation de l'HUD --> créer une classe HUD similaire à shader mais avec moins d'uniform
+		/*
+		_HUD = new ShaderProgram();
+		if (!_HUD->init("HUD.vs.glsl", "HUD.fs.glsl")) {
+			std::cerr << "ERREUR = Initialisation Shaders" << std::endl;
+			return false;
+		}
+		*/
 
 		//Initialisation des Scènes
 		if (!initScenes("scenes/levelList.json")) {
@@ -137,8 +147,8 @@ namespace game
 		bool done = false;
 		Uint32 currentTime = SDL_GetTicks();
 
-		Mix_Chunk *interrupteur;
-		interrupteur = Mix_LoadWAV("src/../assets/switch.wav");
+		//Mix_Chunk *interrupteur;
+		//_interrupteur = Mix_LoadWAV("src/../assets/switch.wav");
 		SDL_Event event;
 
 		while(!done) {
@@ -153,23 +163,14 @@ namespace game
 				updateTorchlight();
 			}          
 
-			//sleep( (10000/60 - deltaTime );
-
 			renderScene();
-
-			
-			if(event.type == SDL_MOUSEBUTTONUP){
-				if(event.button.button == SDL_BUTTON_RIGHT){
-					Mix_PlayChannel(1, interrupteur, 0);
-				}
-			}
 
 			if (userEvents()) {
 				done = true;
 			}
 		}		
-		Mix_FreeChunk(interrupteur);
-		Mix_CloseAudio();
+		//Mix_FreeChunk(_interrupteur);
+		//Mix_CloseAudio();
 	}
 
 	void GameEngine::checkVictory(){
@@ -192,21 +193,22 @@ namespace game
 		else{
 			_Torchlight->setFrames(-60);
 			if(_Torchlight->getLifeTime()>0){
-				_Torchlight->setLifeTime(-1);
+				_Torchlight->setLifeTime(-5);
 			}
 			else{
 				_Torchlight->setNbBatteries(-1);
 			}
 		}
-
-			
-		/*
-		std::cout<<"Gestion lampe torche : "<<std::endl
-			<<"--> Nombre de piles : "<<_Torchlight->getNbBatteries()<<std::endl
-			<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl
-			<<"--> Nombre de frame : "<<_Torchlight->getFrames()<<std::endl;
-			*/
-
+		int rand1  = std::rand()%100+1;
+		if(rand1>_Torchlight->getLifeTime()){
+			int rand2 = std::rand()%100+1;
+			if(rand2>50){
+				_TorchLightWorks = 0;
+			}
+		}else{
+			_TorchLightWorks = 1;
+		}
+		std::cout<<"torche fonctionne ? : "<<_TorchLightWorks<<std::endl;
 	}
 
 	void GameEngine::renderScene()
@@ -215,17 +217,17 @@ namespace game
 
 		getBattery();
 
-		_Scenes[_SceneId]->render(getLampON(),_SceneId); //passage de valeur de getLampON en parametre pour modifier le shader [ne fonctionne pas encore]
+		_Scenes[_SceneId]->render(getLampON(),_SceneId,_TorchLightWorks); //passage de valeur de getLampON en parametre pour modifier le shader [ne fonctionne pas encore]
 		_WindowManager->swapBuffers();
 	}
 
 	void GameEngine::getBattery(){
 		glm::vec3 CameraPosition = _Scenes[_SceneId]->_Camera.getPosition();
-		std::cout << "Position de la camera : " << CameraPosition << std::endl;
+		//std::cout << "Position de la camera : " << CameraPosition << std::endl;
 		//std::cout << "|||||||||||||||||||+  : " << getNbBatteries() <<std::endl;
 		for (auto mesh = _Scenes[_SceneId]->_Meshes.begin(); mesh != _Scenes[_SceneId]->_Meshes.end(); ++mesh) {
 			glm::vec3 meshPosition = (*mesh)->getPosition();
-			std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
+			//std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
 			if((*mesh)->getVisible() == 1){
 				if( std::abs(CameraPosition.x-meshPosition.x)<0.3 && std::abs(CameraPosition.z-meshPosition.z)<0.3){
 					//std::cout << "----- Proche " <<std::endl;
@@ -256,6 +258,8 @@ namespace game
 			if(e.type == SDL_MOUSEBUTTONUP){
 				if(e.button.button == SDL_BUTTON_RIGHT){
 					//std::cout<<"valeur de LampON : "<< getLampON() <<std::endl;
+					
+					//Mix_PlayChannel(1, interrupteur, 0);
 					if(getLampON() != 0){
 						//std::cout<<" valeur de la lampe = 1"<<std::endl;
 						setLampON(0);
@@ -284,27 +288,28 @@ namespace game
 					}
 			}
 
+			if(_WindowManager->isKeyPressed(SDLK_s)){
+			_Scenes[_SceneId]->_Camera.moveFront(-0.1);
+			_Scenes[_SceneId]->_Camera.setPositionY(0.0);
+			} 
+			if(_WindowManager->isKeyPressed(SDLK_z)){
+				_Scenes[_SceneId]->_Camera.moveFront(0.1);
+				_Scenes[_SceneId]->_Camera.setPositionY(0.0);
+			} 
+			if(_WindowManager->isKeyPressed(SDLK_q)){
+				_Scenes[_SceneId]->_Camera.moveLeft(0.1);
+				_Scenes[_SceneId]->_Camera.setPositionY(0.0);
+			} 
+			if(_WindowManager->isKeyPressed(SDLK_d)){
+				_Scenes[_SceneId]->_Camera.moveLeft(-0.1);
+				_Scenes[_SceneId]->_Camera.setPositionY(0.0);
+			}
+
+
 			if(e.type == SDL_QUIT) {
 				std::cout << std::endl << "Fermeture d'application reçue..." << std::endl;
 				quit = true;
 			}
-		}
-
-		if(_WindowManager->isKeyPressed(SDLK_s)){
-			_Scenes[_SceneId]->_Camera.moveFront(-0.1);
-			_Scenes[_SceneId]->_Camera.setPositionY(0.0);
-		} 
-        if(_WindowManager->isKeyPressed(SDLK_z)){
-			_Scenes[_SceneId]->_Camera.moveFront(0.1);
-			_Scenes[_SceneId]->_Camera.setPositionY(0.0);
-		} 
-        if(_WindowManager->isKeyPressed(SDLK_q)){
-			_Scenes[_SceneId]->_Camera.moveLeft(0.1);
-			_Scenes[_SceneId]->_Camera.setPositionY(0.0);
-		} 
-        if(_WindowManager->isKeyPressed(SDLK_d)){
-			_Scenes[_SceneId]->_Camera.moveLeft(-0.1);
-			_Scenes[_SceneId]->_Camera.setPositionY(0.0);
 		}
 
 		return quit;

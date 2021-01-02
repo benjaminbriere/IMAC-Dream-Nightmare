@@ -37,7 +37,7 @@ namespace game
 			~Scene();
 
 			bool init(const char* sceneFilePath);		
-			void render(int lamp, int scene);
+			void render(int lamp, int scene, int torch);
 						
 	};
 }

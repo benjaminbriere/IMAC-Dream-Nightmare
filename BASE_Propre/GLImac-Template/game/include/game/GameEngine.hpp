@@ -50,12 +50,15 @@ namespace game
 
 		glimac::SDLWindowManager* _WindowManager;
 		ShaderProgram* _Program;
+		ShaderProgram* _HUD;
 		std::vector<Scene*> _Scenes;
 		Torchlight* _Torchlight;
 
 		int _SceneId;
 		int _lampON;
 		int _NbStatue;
+		int _TorchLightWorks;
+		//Mix_Chunk * _interrupteur;
 
 		
 	};
