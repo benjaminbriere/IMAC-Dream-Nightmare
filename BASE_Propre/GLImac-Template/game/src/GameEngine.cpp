@@ -160,12 +160,6 @@ namespace game
 
 			renderScene();
 			checkVictory();
-			
-			if(event.type == SDL_MOUSEBUTTONUP){
-				if(event.button.button == SDL_BUTTON_RIGHT){
-					Mix_PlayChannel(1, interrupteur, 0);
-				}
-			}
 
 			if (userEvents()) {
 				done = true;
@@ -260,7 +254,8 @@ namespace game
 	bool GameEngine::userEvents() {
 		SDL_Event e;
 		bool quit = false;
-
+		Mix_Chunk *interrupteur;
+		interrupteur = Mix_LoadWAV("src/../assets/switch.wav");
 		while(_WindowManager->pollEvent(e)) {
 			if (e.type == SDL_MOUSEMOTION)
 			{
@@ -278,6 +273,7 @@ namespace game
 						setLampON(_Torchlight->getLifeTime());
 						//std::cout<<" valeur de la lampe = "<<getLampON()<<std::endl;
 					}
+					Mix_PlayChannel(1, interrupteur, 0);
 				}
 			}
 
