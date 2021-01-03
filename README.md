@@ -41,6 +41,9 @@ la pile : https://sketchfab.com/3d-models/battery-3b3e75dad915432e971b167a339886
 
 le plot : https://sketchfab.com/3d-models/plot-c43287d13c5645ed8889d85ea61197ef#download
 
+la statue de la chouette : https://sketchfab.com/3d-models/owl-wood-statue-3d-scan-23cf22513fb74958bdbcf32b7e372c36
+
+la statue du lémurien : https://sketchfab.com/3d-models/meerkat-wood-statue-3d-scan-55734ea285134947aec5804dbb01bfc0
 
 
 
