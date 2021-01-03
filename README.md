@@ -31,6 +31,15 @@ Armée uniquement d'une lampe toche, cherchez impérativement les piles dans le 
 
 Vous pouvez bouger la caméra en appuyant sur le clic gauche de la souris et éteindre la lampe torche avec le clic droit pour économiser votre pile.
 
+## Ressources graphiques
+
+Tous les models utilisés sont au moins en Creative Commons Attribution-NonCommercial: 
+
+Le musée : https://sketchfab.com/3d-models/the-hallwyl-museum-1st-floor-combined-f74eefe9f1cd4a2795a689451e723ee9
+
+la pile : https://sketchfab.com/3d-models/battery-3b3e75dad915432e971b167a33988605#download
+
+le plot : https://sketchfab.com/3d-models/plot-c43287d13c5645ed8889d85ea61197ef#download
 
 
 
