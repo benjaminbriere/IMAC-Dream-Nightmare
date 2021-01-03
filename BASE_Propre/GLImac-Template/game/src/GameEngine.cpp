@@ -21,31 +21,34 @@ namespace game
 
 	bool GameEngine::init(const char* vsFilename, const char* fsFilename)
 	{
-		
-		//Initialisation d'OpenGL et SDL
-		if (!initSdlOpenGl()) {
-			std::cerr << "ERREUR = Initialisation SDL & OpenGL" << std::endl;
+		try
+		{
+			//Initialisation d'OpenGL et SDL
+			if (!initSdlOpenGl()) {
+				throw std::string("Initialisation SDL & OpenGL");
+			}
+			else{
+				//Initialisation des Shaders
+				_Program = new ShaderProgram();
+				if (!_Program->init(vsFilename, fsFilename)) {
+					throw std::string("Initialisation SHADERS");
+				}
+				else{
+					//Initialisation des Scènes
+					if (!initScenes("scenes/levelList.json")) {
+						throw std::string("Initialisation SCENES");
+					}
+					else{
+						_SceneId = 0; //si les scènes ont correctement été initialisées on passe au niveau 1
+						return true;
+					}
+				}		
+			}
+		}
+		catch(const std::string &err){
+			std::cerr << "ERREUR : "<<err<<std::endl;
 			return false;
 		}
-
-		//Initialisation des Shaders
-		_Program = new ShaderProgram();
-		if (!_Program->init(vsFilename, fsFilename)) {
-			std::cerr << "ERREUR = Initialisation Shaders" << std::endl;
-			return false;
-		}
-
-		//Initialisation des Scènes
-		if (!initScenes("scenes/levelList.json")) {
-			std::cerr << "ERREUR = Initialisation Scènes" << std::endl;
-			return false;
-		}
-
-
-
-		_SceneId = 0; //si les scènes ont correctement été initialisées on passe au niveau 1
-
-		return true;
 	}
 
 	bool GameEngine::initSdlOpenGl()
