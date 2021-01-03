@@ -14,7 +14,6 @@
 #include "Mesh.hpp"
 #include "Shader.hpp"
 #include "FPSCamera.hpp"
-#include "Light.hpp"
 #include "Light_Ambient.hpp"
 #include "Light_Directional.hpp"
 #include "Light_Point.hpp"

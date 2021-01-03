@@ -115,8 +115,6 @@ Shader.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/Shader.hpp
 FPSCamera.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/FPSCamera.hpp
-Light.hpp
-/home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/Light.hpp
 Light_Ambient.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/Light_Ambient.hpp
 Light_Directional.hpp
@@ -179,6 +177,10 @@ glimac/FilePath.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/src/GameEngine.cpp
 game/GameEngine.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/src/game/GameEngine.hpp
+
+/home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/src/Scene.cpp
+game/Scene.hpp
+/home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/src/game/Scene.hpp
 
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/glimac/include/glimac/FilePath.hpp
 string

@@ -115,8 +115,6 @@ Shader.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/Shader.hpp
 FPSCamera.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/FPSCamera.hpp
-Light.hpp
-/home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/Light.hpp
 Light_Ambient.hpp
 /home/benjamin/Documents/openGL/S3/GITProjet/IMAC-Dream-Nightmare/BASE_Propre/GLImac-Template/game/include/game/Light_Ambient.hpp
 Light_Directional.hpp

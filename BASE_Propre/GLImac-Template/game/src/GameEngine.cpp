@@ -201,12 +201,15 @@ namespace game
 			if(_Torchlight->getLifeTime()>0){
 				std::cout << "|||||||||||||||||||+  : " << _Torchlight->getNbBatteries() <<std::endl;
 				std::cout<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl;
-				_Torchlight->setLifeTime(-20);
+				_Torchlight->setLifeTime(-10);
 			}
 			else{
 				std::cout<<"--> Une pile consommée "<<std::endl;
 				_Torchlight->setNbBatteries(-1);
-				_Torchlight->setLifeTime(100,'a');
+				if(_Torchlight->getNbBatteries()!=0){
+					_Torchlight->setLifeTime(100,'a');
+				}
+				
 			}
 		}
 
