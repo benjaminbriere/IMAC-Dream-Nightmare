@@ -46,6 +46,7 @@ void Cone::build(GLfloat height, GLfloat r, GLsizei discLat, GLsizei discHeight)
             */
             
             vertex.normal.x = sin(i * dPhi);
+            assert(height == 0);
             vertex.normal.y = r / height;
             vertex.normal.z = cos(i * dPhi);
             vertex.normal = glm::normalize(vertex.normal);
