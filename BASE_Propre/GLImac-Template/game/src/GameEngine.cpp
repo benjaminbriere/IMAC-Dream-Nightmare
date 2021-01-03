@@ -182,7 +182,10 @@ namespace game
 			std::cout << "c'est GAGNE " << std::endl;
 			_SceneId = 1;
 		}
-		else if(_Torchlight->getNbBatteries()==0 && _Torchlight->getLifeTime() == 0 ){
+		else if( (_Torchlight->getNbBatteries()==0) && (_Torchlight->getLifeTime()==0) ){
+			std::cout << "c'est PERDU " << std::endl;
+			std::cout<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl;
+			std::cout << "|||||||||||||||||||+  : " << _Torchlight->getNbBatteries() <<std::endl;
 			_SceneId = 2;
 		}
 
@@ -194,13 +197,16 @@ namespace game
 			_Torchlight->setFrames(1);
 		}
 		else{
-			_Torchlight->setFrames(-60);
+			_Torchlight->setFrames(0,'a');
 			if(_Torchlight->getLifeTime()>0){
+				std::cout << "|||||||||||||||||||+  : " << _Torchlight->getNbBatteries() <<std::endl;
 				std::cout<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl;
 				_Torchlight->setLifeTime(-20);
 			}
 			else{
+				std::cout<<"--> Une pile consommée "<<std::endl;
 				_Torchlight->setNbBatteries(-1);
+				_Torchlight->setLifeTime(100,'a');
 			}
 		}
 
@@ -227,7 +233,7 @@ namespace game
 	void GameEngine::getBattery(){
 		glm::vec3 CameraPosition = _Scenes[_SceneId]->_Camera.getPosition();
 		//std::cout << "Position de la camera : " << CameraPosition << std::endl;
-		//std::cout << "|||||||||||||||||||+  : " << getNbBatteries() <<std::endl;
+		
 		for (auto mesh = _Scenes[_SceneId]->_Meshes.begin(); mesh != _Scenes[_SceneId]->_Meshes.end(); ++mesh) {
 			glm::vec3 meshPosition = (*mesh)->getPosition();
 			//std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
@@ -240,7 +246,7 @@ namespace game
 			}
 			if((*mesh)->getVisible() == 2.0){
 				if( std::abs(CameraPosition.x-meshPosition.x)<0.1 && std::abs(CameraPosition.z-meshPosition.z)<0.1){
-					std::cout << "----- Proche " <<std::endl;
+					//std::cout << "----- Proche " <<std::endl;
 					(*mesh)->setVisible(0.0);
 					_NbStatue++;
 				}

@@ -22,12 +22,25 @@ namespace game {
         _nbBatteries += v;
     }
 
+    void Torchlight::setNbBatteries(int v, char c){
+        if(c == 'a'){
+            _nbBatteries = v;
+        }
+    }
+
     int Torchlight::getLifeTime(){
         return _lifeTime;
     }
+    
                 
     void Torchlight::setLifeTime(int v){
         _lifeTime += v;
+    }
+
+    void Torchlight::setLifeTime(int v, char c){
+        if(c == 'a'){
+            _lifeTime = v;
+        }
     }
 
     int Torchlight::getFrames(){
@@ -36,6 +49,12 @@ namespace game {
                 
     void Torchlight::setFrames(int v){
         _frames += v;
+    }
+
+    void Torchlight::setFrames(int v, char c){
+        if(c == 'a'){
+            _frames = v;
+        }
     }
 
 

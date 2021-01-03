@@ -20,12 +20,15 @@ namespace game
 
 			int getNbBatteries();		
 			void setNbBatteries(int v);
+			void setNbBatteries(int v, char c);
 
             int getLifeTime();
             void setLifeTime(int v);
+			void setLifeTime(int v,char c);
 
             int getFrames();
             void setFrames(int v);
+			void setFrames(int v, char c);
 						
 	};
 }
