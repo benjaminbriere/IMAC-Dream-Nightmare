@@ -14,49 +14,49 @@ namespace game
 
 	bool Scene::init(const char* sceneFilePath)
 	{
-		// Load the json with the scene datas
+		// Lecture du fichier JSON
 		std::ifstream sceneFile(getScenesFilePath(sceneFilePath), std::ios::in);
 
 		if (!sceneFile) {
-			std::cerr << "- ERROR: Impossible d'ouvrir le fichier scene " << getScenesFilePath(sceneFilePath) << std::endl;
+			std::cerr << "- ERREUR: Impossible d'ouvrir le fichier scene " << getScenesFilePath(sceneFilePath) << std::endl;
 			return false;
 		}
 		std::cout << "- Fichier " << sceneFilePath << " ouvert..." << std::endl;
 
-		// Retrieve the root node
+		// Récupération du noeud JSON root
 		Json::Value root;
 		Json::Reader reader;
 
 		if (!reader.parse(sceneFile, root, false)) {
-      std::cerr  << "- ERROR: Erreur lors de la récupération du json !" << std::endl;
+      		std::cerr  << "- ERREUR: Erreur lors de la récupération du json !" << std::endl;
 			return false;
 		}
 
 		// Retrieve the "meshes" node
 		const Json::Value meshes = root["meshes"];
 		if (meshes == 0) {
-			std::cerr << "- ERROR: Impossible de récupérer le noeud meshes !" << std::endl;
+			std::cerr << "- ERREUR: Impossible de récupérer le noeud meshes !" << std::endl;
 			return false;
 		}
 
-		// Initialize each mesh
+		// Initialisation de chaque mesh
 		for (int i = 0; i < meshes.size(); i++) {
 			std::cout << "- Mesh " << i+1 << " sur " << meshes.size() << " - initialisation..." << std::endl;
 
 			Mesh* tmpMesh = new Mesh();
 
-			// Initialize the mesh
+			// Initialisation du mesh
 			if (tmpMesh->loadMesh(meshes[i].get("source", 0).asString().c_str())) {
 				std::cout << "- Mesh " << i+1 << " initalisée correctement." << std::endl;
 			}
 			else {
-				std::cerr << "- ERROR: Erreur lors de l'initialisation de la Mesh " << i+1 << std::endl;
+				std::cerr << "- ERREUR: Initialisation de la Mesh " << i+1 << std::endl;
 				return false;
 			}
 
 			tmpMesh->setVisible(meshes[i].get("visible",0).asFloat());
 
-			// Set the relative coords, rotation and scale of the mesh
+			// Récupération des caractéristiques de chaque mesh
 			tmpMesh->setPosition(glm::vec3(
 				meshes[i].get("position",0).get("x",0).asFloat(),
 				meshes[i].get("position",0).get("y",0).asFloat(),
@@ -80,10 +80,10 @@ namespace game
 
 		}
 
-		// Retrieve the "lights" node
+		// Récupération du noeud JSON light
 		const Json::Value lights = root["lights"];
 		if (lights == 0) {
-			std::cerr << "- ERROR: Impossible de récupérer le noeud lights !" << std::endl;
+			std::cerr << "- ERREUR: Impossible de récupérer le noeud lights !" << std::endl;
 			return false;
 		}
 
@@ -129,14 +129,14 @@ namespace game
 			}
 		}
 
-		// Retrieve the camera node, used to set the défault caméra
+		// Récupération du noeud json caméra
 		const Json::Value cameraDatas = root["camera"];
 		if (cameraDatas == 0) {
-			std::cerr << "- ERROR: Impossible de récupérer le noeud camera !" << std::endl;
+			std::cerr << "- ERREUR: Impossible de récupérer le noeud camera !" << std::endl;
 			return false;
 		}
 
-		// Initialize the camera
+		// Initialisation de la camera FPS
 		_Camera = FPSCamera();
 
 		_Camera.setPosition(glm::vec3(
@@ -152,10 +152,9 @@ namespace game
 	void Scene::render(int lamp, int scene) {
 		glEnable(GL_DEPTH_TEST);
 
-		// Render each mesh
+		// RENDU de chaque Mesh
 		for (auto mesh = _Meshes.begin(); mesh != _Meshes.end(); ++mesh) {
 			
-			//std::cout << "VISIBLE : "<<(*mesh)->getVisible() <<std::endl;
 			if((*mesh)->getVisible() == 1 || (*mesh)->getVisible() == -1 || (*mesh)->getVisible() == 2){
 
 				glm::mat4 MVMatrix, ProjMatrix, NormalMatrix, ViewMatrix;
@@ -184,8 +183,6 @@ namespace game
 				_Program->setScene(scene);
 				(*mesh)->render();
 			}
-
-			//std::cout << "Position de la camera : "<<_Camera.getPosition()<<std::endl;
 		}
 	}
 }

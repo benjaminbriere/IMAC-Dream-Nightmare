@@ -19,10 +19,12 @@ namespace game
     
   }
 
+  //définie la position de la caméra
   void FPSCamera::setPosition(glm::vec3 position){
     m_Position = position;
   }
 
+  //définie la position de la caméra sur l'axe Y (sert concretement à bloquer la caméra sur l'axe Y pour passer d'une caméra FreeFly à une FPS)
   void FPSCamera::setPositionY(float v){
     m_Position.y = v;
   }

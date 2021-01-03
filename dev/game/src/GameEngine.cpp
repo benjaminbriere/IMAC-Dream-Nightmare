@@ -11,7 +11,7 @@ namespace game
 		setLampON(_Torchlight->getLifeTime()); // allumage de la lampe torche qui doit interrargir avec le shader
 
 		initApplicationPath(appPath); //Récupération du chemin relatif utile pour le chargement des shaders, scenes, models, textures
-		std::cout << "App run on " << gApplicationPath->dirPath() << std::endl;
+		std::cout << "Emplacement de l'application " << gApplicationPath->dirPath() << std::endl;
 	}
 
 	GameEngine::~GameEngine()
@@ -141,31 +141,28 @@ namespace game
 		Uint32 currentTime = SDL_GetTicks();
 
 		Mix_Chunk *interrupteur;
-		interrupteur = Mix_LoadWAV("src/../assets/switch.wav");
+		interrupteur = Mix_LoadWAV("src/../assets/switch.wav"); // gestion sonore de l'interrupteur de la lampe torche
 		SDL_Event event;
 
 		while(!done) {
 			Uint32 deltaTime = SDL_GetTicks() - currentTime;
-			//std::cout << "delta time " << deltaTime <<std::endl;
 			Uint32 currentTime = SDL_GetTicks();
 			if(deltaTime < 1000/60){
 				SDL_Delay(1000/60 - deltaTime);
 			}
 			
-			if(getLampON()!=0){
+			if(getLampON()!=0){ // si la lampe torche est allumé on update l'état de la pile de la lampe torche
 				updateTorchlight();
 			}          
 
-			//sleep( (10000/60 - deltaTime );
+			renderScene(); // rendu de la scène 
+			checkVictory(); // vérification que le joueur n'a pas atteint le stade win/lose du jeu
 
-			renderScene();
-			checkVictory();
-
-			if (userEvents()) {
+			if (userEvents()) { 
 				done = true;
 			}
 		}		
-		Mix_FreeChunk(interrupteur);
+		Mix_FreeChunk(interrupteur); 
 		Mix_CloseAudio();
 	}
 
@@ -173,29 +170,24 @@ namespace game
 
 		if(_NbStatue == 4) // le joueur a récupéré toute les statues
 		{
-			std::cout << "c'est GAGNE " << std::endl;
-			_SceneId = 1;
+			_SceneId = 1; // ID de la scène victoire
 		}
 		else if( (_Torchlight->getNbBatteries()==0) && (_Torchlight->getLifeTime()==0) ){
-			std::cout << "c'est PERDU " << std::endl;
-			std::cout<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl;
-			std::cout << "|||||||||||||||||||+  : " << _Torchlight->getNbBatteries() <<std::endl;
-			_SceneId = 2;
+			_SceneId = 2; //ID de la scène défaite
 		}
 
 	}
 
 
 	void GameEngine::updateTorchlight(){
-		if(_Torchlight->getFrames()<=60){
-			_Torchlight->setFrames(1);
+
+		if(_Torchlight->getFrames()<=60){ //Le jeu étant en 60frames/s cela nous permet de compter une seconde 
+			_Torchlight->setFrames(1); //incrémente le compteur de frame
 		}
 		else{
-			_Torchlight->setFrames(0,'a');
-			if(_Torchlight->getLifeTime()>0){
-				std::cout << "|||||||||||||||||||+  : " << _Torchlight->getNbBatteries() <<std::endl;
-				std::cout<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl;
-				_Torchlight->setLifeTime(-4);
+			_Torchlight->setFrames(0,'a'); //passage à zero du compteur de frame
+			if(_Torchlight->getLifeTime()>0){ 
+				_Torchlight->setLifeTime(-4); //on enlèvre 4% de batterie par tranche de 60frames
 			}
 			else{
 				std::cout<<"--> Une pile consommée "<<std::endl;
@@ -207,43 +199,31 @@ namespace game
 			}
 		}
 
-			
-		/*
-		std::cout<<"Gestion lampe torche : "<<std::endl
-			<<"--> Nombre de piles : "<<_Torchlight->getNbBatteries()<<std::endl
-			<<"--> Etat de la pile : "<<_Torchlight->getLifeTime()<<std::endl
-			<<"--> Nombre de frame : "<<_Torchlight->getFrames()<<std::endl;
-			*/
-
 	}
 
 	void GameEngine::renderScene()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		getBattery();
+		getBattery(); // permet de récupérer l'objet pile situé dans le niveau
 
 		_Scenes[_SceneId]->render(getLampON(),_SceneId); //passage de valeur de getLampON en parametre pour modifier le shader [ne fonctionne pas encore]
 		_WindowManager->swapBuffers();
 	}
 
-	void GameEngine::getBattery(){
-		glm::vec3 CameraPosition = _Scenes[_SceneId]->_Camera.getPosition();
-		//std::cout << "Position de la camera : " << CameraPosition << std::endl;
+	void GameEngine::getBattery(){ 
+		glm::vec3 CameraPosition = _Scenes[_SceneId]->_Camera.getPosition(); //position de la caméra
 		
 		for (auto mesh = _Scenes[_SceneId]->_Meshes.begin(); mesh != _Scenes[_SceneId]->_Meshes.end(); ++mesh) {
-			glm::vec3 meshPosition = (*mesh)->getPosition();
-			//std::cout << "Position des models  : " << (*mesh)->getPosition() << std::endl; 
-			if((*mesh)->getVisible() == 1){
-				if( std::abs(CameraPosition.x-meshPosition.x)<0.3 && std::abs(CameraPosition.z-meshPosition.z)<0.3){
-					//std::cout << "----- Proche " <<std::endl;
+			glm::vec3 meshPosition = (*mesh)->getPosition(); //position de chaque objet
+			if((*mesh)->getVisible() == 1){ // == 1 c'est une pile
+				if( std::abs(CameraPosition.x-meshPosition.x)<0.3 && std::abs(CameraPosition.z-meshPosition.z)<0.3){ 
 					(*mesh)->setVisible(0.0);
 					_Torchlight->setNbBatteries(1);
 				}
 			}
-			if((*mesh)->getVisible() == 2.0){
+			if((*mesh)->getVisible() == 2.0){ // c'est une statue
 				if( std::abs(CameraPosition.x-meshPosition.x)<0.1 && std::abs(CameraPosition.z-meshPosition.z)<0.1){
-					//std::cout << "----- Proche " <<std::endl;
 					(*mesh)->setVisible(0.0);
 					_NbStatue++;
 				}
@@ -263,21 +243,18 @@ namespace game
 			}
 
 			if(e.type == SDL_MOUSEBUTTONUP){
-				if(e.button.button == SDL_BUTTON_RIGHT){
-					//std::cout<<"valeur de LampON : "<< getLampON() <<std::endl;
+				if(e.button.button == SDL_BUTTON_RIGHT){ // désactiver la lampe torche au clic souris
 					if(getLampON() != 0){
-						//std::cout<<" valeur de la lampe = 1"<<std::endl;
 						setLampON(0);
-						//std::cout<<" valeur de la lampe = "<< getLampON()<<std::endl;
 					}else{
 						setLampON(_Torchlight->getLifeTime());
-						//std::cout<<" valeur de la lampe = "<<getLampON()<<std::endl;
 					}
-					Mix_PlayChannel(1, interrupteur, 0);
+					Mix_PlayChannel(1, interrupteur, 0); //activer le bruitage
 				}
 			}
 
 			if (e.type == SDL_KEYUP) {
+				// à fin de test permet d'accéder aux scenes de victoire et défaite sans atteindre les conditions
 				switch (e.key.keysym.sym) {
 					case SDLK_LEFT:
 						std::cout<<"Numéro de la scène : "<<_SceneId<<std::endl;
@@ -300,6 +277,7 @@ namespace game
 			}
 		}
 
+		//navigation dans la scene ZQSD
 		if(_WindowManager->isKeyPressed(SDLK_s)){
 			_Scenes[_SceneId]->_Camera.moveFront(-0.1);
 			_Scenes[_SceneId]->_Camera.setPositionY(0.0);

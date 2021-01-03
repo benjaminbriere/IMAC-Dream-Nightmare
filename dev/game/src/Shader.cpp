@@ -50,13 +50,11 @@ namespace game
 	}
 
 	void ShaderProgram::setLampON(int v){
-	  glUniform1i(_lampON, v);
-	  //_lampON = v;	
+	  glUniform1i(_lampON, v);	
 	}
 
 	void ShaderProgram::setScene(int v){
 	  glUniform1i(_scene, v);
-	  //_lampON = v;	
 	}
 
 

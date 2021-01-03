@@ -52,7 +52,7 @@ namespace game
       ret = init(scene, filename);
     }
     else {
-      std::cerr << "-- ERROR: Erreur lors du chargement du fichier 3D " << filename << std::endl;
+      std::cerr << "ERREUR: Chargement du fichier 3D " << filename << std::endl;
     }
 
     return ret;
@@ -126,7 +126,7 @@ namespace game
     std::unique_ptr<glimac::Image> defaultTex = loadImage(defTexturePath);
 
     if (defaultTex == NULL) {
-      std::cerr << "-- Erreur lors du chargement de la texture par défaut " << defTexturePath << std::endl;
+      std::cerr << "-- ERREUR chargement texture par défaut " << defTexturePath << std::endl;
       return false;
     }
 
